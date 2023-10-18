@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Route, Routes,Navigate } from 'react-router-dom'
+import Menu from './components/Menu'
+import About from './Views/About'
+import Home from './Views/Home'
+import Login from './Views/Login'
+import Profile from './Views/Profile'
+import Protected from './Views/Protected'
+import Users from './Views/Users'
+import ViewNotFound from './Views/ViewNotFound'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   <BrowserRouter>
+   <Menu/>
+   <Routes>
+      <Route path='/' element={<Navigate to="login"/>}/>
+      <Route path='home' element={<Protected Component={Home}/>}/>
+      <Route path='about' element={<Protected Component={About}/>}/>
+      <Route path='login' element={<Login/>}/> 
+      <Route path='profile' element={<Protected Component={Profile}/>}/> 
+      <Route path='users' element={<Protected Component={Users}/>}/> 
+      <Route path='*' element={<ViewNotFound/>}/> 
+     
+   </Routes>
+   
+   </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
