@@ -6,6 +6,7 @@ import Home from './Views/Home'
 import Login from './Views/Login'
 import Profile from './Views/Profile'
 import Protected from './Views/Protected'
+import UserDetails from './Views/UserDetails'
 import Users from './Views/Users'
 import ViewNotFound from './Views/ViewNotFound'
 
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='login' element={<Login/>}/> 
       <Route path='profile' element={<Protected Component={Profile}/>}/> 
       <Route path='users' element={<Protected Component={Users}/>}/> 
+      <Route path='users/:id' element={<Protected Component={UserDetails}/>}/> 
       <Route path='*' element={<ViewNotFound/>}/> 
      
    </Routes>
